@@ -1,3 +1,11 @@
+/*
+ * @Author: Dicky Ermawan S 
+ * @Profile: https://www.linkedin.com/in/dickyermawan/ 
+ * @Date: 2023-12-04 21:30:59 
+ * @Last Modified by:   Dicky Ermawan S 
+ * @Last Modified time: 2023-12-04 21:30:59 
+ */
+ 
 .main-button {
 	position:relative;
 	display:inline-block;
@@ -14,4 +22,26 @@
 	background-color:#fff;
 	border: 2px solid #cb494b;
 	color:#cb494b;
+}
+
+
+.btn-totop {
+    visibility: hidden;
+    position: fixed;
+    bottom: 40px;
+    right: 200px;
+    text-align: center;
+    box-shadow: 2.5px 2.5px 5px #999;
+    z-index: 100;
+    border-radius: 40px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: white !important;
+
+}
+
+
+.btn-totop.aktif {
+    visibility: visible;
+    opacity: 1;
 }
