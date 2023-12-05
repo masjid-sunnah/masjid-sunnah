@@ -26,6 +26,13 @@
 	<link type="text/css" rel="stylesheet" href="css/custom.css" />
 
 
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+
 	<link type="image/png" href="img/icon.png" rel="icon">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -384,7 +391,7 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="card-body">
-							<div class="feature">
+							<!-- <div class="feature">
 								<i class="feature-icon fa fa-flask"></i>
 								<div class="feature-content">
 									<h4>Online Courses</h4>
@@ -392,7 +399,11 @@
 										nominati.
 									</p>
 								</div>
-							</div>
+							</div> -->
+
+
+							<div id="map" style="width: 100%; height: 520px;"></div>
+
 						</div>
 					</div>
 				</div>
@@ -548,6 +559,61 @@
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/jquery.overlayScrollbars.min.js"></script>
 	<script type="text/javascript" src="js/custom.js"></script>
+
+	<script>
+		const map = L.map('map').setView([0.4666116830640582, 101.38742226159275], 13);
+
+		var iconRed = L.icon({
+			iconUrl: 'img/iconRed.png',
+			// shadowUrl: 'leaf-shadow.png',
+
+			iconSize: [38, 95], // size of the icon
+			shadowSize: [50, 64], // size of the shadow
+			iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+			shadowAnchor: [4, 62], // the same for the shadow
+			popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+		});
+
+		const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		}).addTo(map);
+
+		// const marker = L.marker([51.5, -0.09]).addTo(map)
+		const marker = L.marker([0.4666116830640582, 101.38742226159275], {
+				icon: iconRed
+			}).addTo(map)
+			.bindPopup('<b>Hello world!</b><br />I am a popup.'); //.openPopup();
+
+		// const circle = L.circle([51.508, -0.11], {
+		// 	color: 'red',
+		// 	fillColor: '#f03',
+		// 	fillOpacity: 0.5,
+		// 	radius: 500
+		// }).addTo(map).bindPopup('I am a circle.');
+
+		// const polygon = L.polygon([
+		// 	[51.509, -0.08],
+		// 	[51.503, -0.06],
+		// 	[51.51, -0.047]
+		// ]).addTo(map).bindPopup('I am a polygon.');
+
+
+		// const popup = L.popup()
+		// 	.setLatLng([51.513, -0.09])
+		// 	.setContent('I am a standalone popup.')
+		// 	.openOn(map);
+
+		function onMapClick(e) {
+			popup
+				.setLatLng(e.latlng)
+				.setContent(`You clicked the map at ${e.latlng.toString()}`)
+				.openOn(map);
+		}
+
+		map.on('click', onMapClick);
+	</script>
+
 </body>
 
 </html>
