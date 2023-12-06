@@ -37,7 +37,7 @@
 <div id="map" style="width: 100%; height: 100%;"></div>
 <script>
 
-	const map = L.map('map').setView([51.505, -0.09], 13);
+	const map = L.map('map').setView([0.4665761748521455, 101.38696779894158], 13);
 
 	var iconRed = L.icon({
 		iconUrl: 'iconRed.png',
@@ -56,10 +56,10 @@
 	}).addTo(map);
 
 	// const marker = L.marker([51.5, -0.09]).addTo(map)
-	const marker = L.marker([51.5, -0.09],{icon: iconRed}).addTo(map)
+	const marker = L.marker([0.4665761748521455, 101.38696779894158],{icon: iconRed}).addTo(map)
 		.bindPopup('<b>Hello world!</b><br />I am a popup.'); //.openPopup();
 
-	markerz = new L.marker([51.55, -0.05])
+	markerz = new L.marker([0.4965761748521455, 101.38696779894158])
     .addTo(map)
 	.bindPopup('<b>Hello zzzzz!</b><br />I am a popup.');
 
