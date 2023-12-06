@@ -109,10 +109,14 @@
 			// contentType: false,
 			success: function (json) {
 				console.log(json);
-				
-				markerz = new L.marker([0.4965761748521455, 101.38696779894158],{icon: iconRed})
-				.addTo(map)
-				.bindPopup('<b>Hello zzzzz!</b><br />I am a popup.');
+				if(json.ok){
+					$.each( json.result, function( key, value ) {
+						// console.log( key + ": " + value );
+						markerz = new L.marker([value.lat, value.lng],{icon: iconRed})
+						.addTo(map)
+						.bindPopup('<b>' + value.nama + '</b><br />' + value.deskripsi + '');
+					});
+				}
 			},
 			error: function (jqXHR, data, errorThrown) {
 				console.log('Error: ' + data.error);
