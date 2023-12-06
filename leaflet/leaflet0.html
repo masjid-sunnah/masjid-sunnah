@@ -89,6 +89,8 @@
 
 	//
 
+	// "X-Master-Key", "<YOUR_API_KEY>"
+
 	// url = 'masjid_red.json';
 	// url = 'https://pastebin.com/raw/uwtHCzAV';
 	url = 'https://api.jsonbin.io/v3/b/656fe15f54105e766fda384b/latest';
@@ -96,6 +98,9 @@
 		$.ajax({
 			url: url,
 			type: 'GET',
+			beforeSend: function(request) {
+				request.setRequestHeader("X-Master-Key", "$2a$10$bsuK8KPq5b2WdI0LPqTR9OvoilPrzoUwfMDEtTvmDJz9H8somXare");
+			},
 			// data: data,
 			cache: false,
 			// dataType: 'json',
